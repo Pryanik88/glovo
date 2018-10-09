@@ -5,16 +5,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 @Service
 public class ExchangeService {
 
     private final ExchangeConnector connector;
+    private final ArrayList<String> stocks = new ArrayList<String>(){{
+        add("BFX");
+        add("BNB");
+        add("BTX");
+    }};
 
     @Autowired
     public ExchangeService(ExchangeConnector connector) {
@@ -31,11 +37,9 @@ public class ExchangeService {
 
     }
 
-    public Map<String,String> getPrices(String productId) throws IOException {
-        Map<String, String> pricesMap = new HashMap<>();
-        pricesMap.put("BTX", connector.getPrice("BTX", productId));
-        pricesMap.put("BFX", connector.getPrice("BFX", productId));
-        pricesMap.put("BNB", connector.getPrice("BNB", productId));
+    public Map<String,BigDecimal> getPrices(String productId) throws IOException {
+        Map<String, BigDecimal> pricesMap = new TreeMap<>();
+        stocks.forEach(e->pricesMap.put(e, connector.getPrice(e, productId)));
         return pricesMap;
     }
 }

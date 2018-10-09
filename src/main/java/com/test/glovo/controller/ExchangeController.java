@@ -1,12 +1,11 @@
 package com.test.glovo.controller;
 
-import com.test.glovo.dto.ExchangeDTO;
 import com.test.glovo.service.ExchangeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.Collections;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +27,7 @@ public class ExchangeController {
     }
 
     @GetMapping("/{productId}/prices")
-    public Map<String,String> getPrice(@PathVariable String productId) throws IOException {
+    public Map<String,BigDecimal> getPrice(@PathVariable String productId) throws IOException {
         return service.getPrices(productId);
     }
 }

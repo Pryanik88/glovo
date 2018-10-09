@@ -9,7 +9,7 @@ export default {
   name: 'App',
   data () {
     return {
-      msg: 'welcome message!'
+      msg: 'Wellcome to Crypto Currency Exchange Informer!'
     }
   }
 };
