@@ -1,6 +1,6 @@
 # Instructions
 
-> Glovo test frontend part
+> Glovo test full stack
 
 >Important note:
 You need to patch cacert file in your jdk folder {JDKPath}/jre/lib/security/ to connect to moneeda API.
