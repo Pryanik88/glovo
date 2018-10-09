@@ -23,6 +23,7 @@ cd ..
 
 mvn clean install
 
-
 ```
+>Local server is on localhost:8080/ 
+ 
 
